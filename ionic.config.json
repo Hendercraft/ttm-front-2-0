@@ -1,0 +1,8 @@
+{
+  "name": "TTM-front 2.0",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "3b3a4e59"
+}
