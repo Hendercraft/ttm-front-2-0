@@ -1,0 +1,215 @@
+.upper-bar{
+  width: 53%;
+  margin-top: 1em;
+  margin-left: 2em;
+  padding-top: 1em;
+  /* padding-left: 2em; */
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px gray solid;
+}
+.upper-bar div{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+button{
+  font-size: 25px;
+  /* font-family: 'Calibri light', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif; */
+  font-family: "Calibri Light", sans-serif;
+  font-weight: lighter;
+  letter-spacing: .1em;
+}
+
+#button-project{
+  font-weight: bold;
+}
+
+img{
+  margin-bottom: 3em;
+  width: 100%;
+}
+
+.main-project h1{
+  margin-top: 2.5em;
+}
+
+#top{
+  margin-top: 0em;
+}
+
+h1{
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.project{
+  padding-top: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px blue solid; */
+  margin-left: 2em;
+
+}
+
+.main-project{
+  /* border: 1px black solid; */
+  width: 60%;
+  color: #767676;
+}
+
+.main-project p{
+  text-align: justify;
+  font-size: smaller;
+  /* color: #767676; */
+}
+
+.add-project{
+  /* border: 1px red solid; */
+  width: 30%;
+  color: #767676;
+}
+.add-project p{
+  font-size: smaller;
+}
+.add-project h1{
+  text-align: center;
+}
+
+/* Team part */
+
+.team{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5em;
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+.reseacher{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5em;
+  margin-top: 5em;
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+.reseacher div{
+  width: 150px;
+}
+.Partnership{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:flex-start;
+  /* align-items: stretch; */
+  margin-bottom: 5em;
+  margin-top: 5em;
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+.img-team{
+  /* height: 100px; */
+
+}
+
+.Partnership div {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+  width: 150px;
+  /* border: 1px red solid; */
+  /* height: 250px; */
+}
+
+/* Contact */
+
+.contact{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5em;
+  margin-bottom: 10em;
+}
+
+.contact-form{
+  width: 800px;
+  height: 700px;
+  border: 1px grey solid;
+  border-radius: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.contact-form div {
+  margin-top: 1em;
+}
+
+.contact-form input{
+  /* Pour s'assurer que tous les champs texte ont la même police.
+     Par défaut, les textarea ont une police monospace */
+  font: 1em sans-serif;
+
+  /* Pour que tous les champs texte aient la même dimension */
+  /* width: 300px; */
+  box-sizing: border-box;
+
+  /* Pour harmoniser le look & feel des bordures des champs texte */
+  border: 1px solid #999;
+}
+
+.contact-form label{
+  /* Pour être sûrs que toutes les étiquettes ont même taille et sont correctement alignées */
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+
+.identity{
+  display: flex;
+  justify-content: space-between;
+}
+
+.credentials{
+  display: flex;
+  justify-content: space-between;
+}
+
+.subject{
+  display:inline-flex;
+  padding-left: 0em;
+  margin-left: 0em;
+}
+
+
+textarea{
+  resize: none;
+  overflow: auto;
+
+  height: 250px;
+  width: 100%;
+
+  flex-grow: 4;
+  margin-top: 2em;
+  margin-bottom: 1em;
+
+  border-radius: 0.5em;
+}
+
+
+#contact-send{
+  border: 1px #767676 solid;
+  border-radius: 0.5em;
+  align-self:center;
+  margin-top: 5em;
+  width: 20%;
+}
