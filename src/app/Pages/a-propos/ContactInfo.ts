@@ -1,4 +1,4 @@
-export interface ContactInfo {
+export class ContactInfo {
   name?: string;
   lastName?: string;
   email?: string;
