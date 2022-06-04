@@ -1,0 +1,36 @@
+<form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="identity">
+    <div class="name">
+      <label for="name">Nom :</label>
+      <input id="name" formControlName="name" type="text" required>
+    </div>
+
+    <div class="last_name">
+      <label for="last_name">Prénom :</label>
+      <input id="last_name" formControlName="lastName" type="text" required>
+    </div>
+  </div>
+
+  <div class="credentials">
+    <div class="email">
+      <label for="email">Email :</label>
+      <input id="email" formControlName="email" type="email" required>
+    </div>
+
+    <div class="phone">
+      <label for="phone">Téléphone :</label>
+      <input id="phone" formControlName="phone" type="tel" required>
+    </div>
+  </div>
+
+  <div class="subject">
+    <label for="subject">Sujet :</label>
+    <input id="subject" formControlName="subject" type="text" required>
+  </div>
+
+  <div class="message">
+    <textarea id="message" placeholder="Veuillez insérer un message" formControlName="message" required></textarea>
+  </div>
+
+  <button id="contact-send">Envoyer</button>
+</form>

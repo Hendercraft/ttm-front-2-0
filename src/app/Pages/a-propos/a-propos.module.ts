@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AProposPageRoutingModule } from './a-propos-routing.module';
 
 import { AProposPage } from './a-propos.page';
+import {ContactFormComponent} from '../../Form/a-propos/contact-form/contact-form.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { AProposPage } from './a-propos.page';
     AProposPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [AProposPage]
+  declarations: [AProposPage, ContactFormComponent]
 })
 export class AProposPageModule {}
