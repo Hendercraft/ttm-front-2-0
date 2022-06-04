@@ -17,6 +17,9 @@ import {ContactFormComponent} from '../../Form/a-propos/contact-form/contact-for
     AProposPageRoutingModule,
     ReactiveFormsModule
   ],
+  exports: [
+    AProposPage
+  ],
   declarations: [AProposPage, ContactFormComponent]
 })
 export class AProposPageModule {}
