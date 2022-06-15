@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-menu',
@@ -7,13 +8,13 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit{
-
+  sidenav!: MatSidenav;
   constructor(private menu: MenuController) { }
 
 
   openFirst() {
     this.menu.enable(true, 'first');
-    this.menu.open('first');
+    console.log(this.menu.open('first'));
   }
 
   openEnd() {

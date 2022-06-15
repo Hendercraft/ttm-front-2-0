@@ -18,6 +18,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {AProposPageModule} from './Pages/a-propos/a-propos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MenuComponent} from './menu/menu.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,11 @@ import {MenuComponent} from './menu/menu.component';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatChipsModule
-    ]
+    MatChipsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
+  ]
   ,
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
