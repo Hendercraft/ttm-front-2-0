@@ -1,0 +1,91 @@
+.bar {
+  background-color: black;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  margin-left: 0.2em;
+
+  padding-left: 0;
+  padding-bottom: 0;
+
+  font-size: 1.6em;
+
+  text-align: left;
+
+  overflow-Y:auto;
+}
+
+.menu{
+  margin-bottom: 2em;
+}
+
+.modifyDatabase{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  font-size: .8em;
+}
+
+.modifyDatabase div{
+  margin-bottom: .2em;
+  margin-top: 1em;
+}
+
+#TTM_logo{
+  width: 98%;
+  padding-bottom: 2em;
+  border-bottom: 1px rgb(71, 71, 71) solid;
+}
+
+
+
+a{
+  color: rgb(218, 218, 218);
+}
+
+a:hover{
+  text-decoration:none;
+  color: white;
+}
+button{
+  background-color: black;
+}
+
+
+
+#navbar{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo_img{
+  /* width: 50%; */
+  height: 10vh;
+}
+
+.hamburger_img{
+  height: 10vh;
+}
+
+@media screen and (max-width: 950px)
+{
+  #sidebar
+  {
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 950px)
+{
+  #navbar
+  {
+    display: none;
+  }
+}

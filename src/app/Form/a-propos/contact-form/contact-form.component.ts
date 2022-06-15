@@ -19,10 +19,7 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this.formBuilder.group({
-      name: ['', [
-        Validators.required
-      ]
-      ],
+      name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required], Validators.email],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], //Accept only number
@@ -33,7 +30,8 @@ export class ContactFormComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log(this.contactForm);
+    console.log(this.findInvalidControls());
+    console.log(this.contactForm.valid);
     const contactInfo: ContactInfo = new ContactInfo();
     contactInfo.name = this.contactForm.value.name;
     contactInfo.lastName = this.contactForm.value.lastName;
@@ -41,12 +39,24 @@ export class ContactFormComponent implements OnInit {
     contactInfo.phone = this.contactForm.value.phone;
     contactInfo.subject = this.contactForm.value.subject;
     contactInfo.message = this.contactForm.value.message;
-    if (this.contactForm.valid) {
+    if (this.findInvalidControls().length === 0) {
       this.api.sendAboutContactForm(contactInfo).subscribe(response => console.log(response));
     } else {
       console.log('the form is invalid !');
+      console.log(this.contactForm.valid);
+
     }
 
+  }
 
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.contactForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
   }
 }

@@ -39,9 +39,9 @@ $app-theme: mat.define-light-theme((
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #222428;
+  --ion-color-primary: #ffffff;
   --ion-color-primary-rgb: 34, 36, 40;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #222428;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #1e2023;
   --ion-color-primary-tint: #383a3e;
@@ -188,10 +188,10 @@ $app-theme: mat.define-light-theme((
    */
 
   .ios body {
-    --ion-background-color: #000000;
+    --ion-background-color: #ffffff;
     --ion-background-color-rgb: 0,0,0;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-color-step-50: #0d0d0d;
@@ -232,10 +232,10 @@ $app-theme: mat.define-light-theme((
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #ffffff;
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-border-color: #222222;

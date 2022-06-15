@@ -21,6 +21,13 @@ button{
   letter-spacing: .1em;
 }
 
+ion-segment-button{
+  --color: grey;
+  --color-hover: black;
+  --border-color: black;
+  --color-checked: black;
+}
+
 #button-project{
   font-weight: bold;
 }
@@ -35,7 +42,7 @@ img{
 }
 
 #top{
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 h1{
@@ -186,8 +193,8 @@ h1{
 
 .subject{
   display:inline-flex;
-  padding-left: 0em;
-  margin-left: 0em;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 

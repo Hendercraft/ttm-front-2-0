@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import {environment} from '../environments/environment'; //this file is replaced by the prod one if --dev
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  apiURL = environment.apiURL;
   public appPages = [
     { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },

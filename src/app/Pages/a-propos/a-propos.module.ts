@@ -8,6 +8,10 @@ import { AProposPageRoutingModule } from './a-propos-routing.module';
 
 import { AProposPage } from './a-propos.page';
 import {ContactFormComponent} from '../../Form/a-propos/contact-form/contact-form.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -15,7 +19,11 @@ import {ContactFormComponent} from '../../Form/a-propos/contact-form/contact-for
     FormsModule,
     IonicModule,
     AProposPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     AProposPage

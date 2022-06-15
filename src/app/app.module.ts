@@ -6,13 +6,24 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule} from '@angular/material/chips';
+
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {AProposPageModule} from './Pages/a-propos/a-propos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MenuComponent} from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -21,7 +32,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     AProposPageModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatChipsModule
+    ]
+  ,
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
