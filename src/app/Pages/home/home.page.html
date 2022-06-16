@@ -1,0 +1,33 @@
+ <ion-content>
+
+    <div class="head">
+      <h1 class="title">DES USINES DANS LA VILLE</h1>
+    </div>
+
+    <ion-segment class = upper-bar [(ngModel)]="selectedTab">
+      <ion-segment-button id ="bt-visite-virtuelle" value="visite_virtuelle">Visite virtuelle</ion-segment-button>
+      <ion-segment-button id ="bt-multimedia" value="multimedia">Multimedia</ion-segment-button>
+      <ion-segment-button  id ="bt-cartographie" value="cartographie">Cartographie</ion-segment-button>
+    </ion-segment>
+
+  <div class="main">
+    <div class="home" *ngIf="selectedTab === 'home'">
+      <img src="../../../assets/TA_Belfort_1827_ad09003_anu0303p032ta.jpg" alt="Carte de Belfort de 1827"/>
+    </div>
+    <div class="visite-virtuelle" *ngIf="selectedTab === 'visite_virtuelle'">
+      <p>Ceci correspond à l'onglet visite virtuelle</p>
+    </div>
+
+    <div class="multimedia" *ngIf="selectedTab === 'multimedia'">
+      <p>Ceci correspond à l'onglet multimedia</p>
+    </div>
+
+    <div class="cartographie" *ngIf="selectedTab === 'cartographie'">
+      <p>Ceci correspond à l'onglet cartographie</p>
+      <img src="../../../assets/patrimoine1.jpg" alt="Haut fourneau de la société Nord et Loraine  "/>
+    </div>
+  </div>
+
+</ion-content>
+
+

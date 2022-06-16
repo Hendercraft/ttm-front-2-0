@@ -21,11 +21,14 @@ import {MenuComponent} from './menu/menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+
   ],
   entryComponents: [],
   imports: [
@@ -43,7 +46,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatChipsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
   ]
   ,
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

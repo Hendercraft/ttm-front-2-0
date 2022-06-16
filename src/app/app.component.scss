@@ -118,6 +118,10 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 }
 
+ion-button{
+  --background: var(--ion-color-primary-contrast);
+  --color: var(--ion-color-primary);
+}
 mat-toolbar {
   background: #000000;
   color: white;
@@ -125,11 +129,11 @@ mat-toolbar {
 
 mat-sidenav {
   margin: 16px;
-  width: 200px;
+  margin-left: 0;
+  width: 300px;
   border-right: none;
-  background: #001125;
+  background: #000000;
   color: white;
-  border-radius: 10px;
   padding: 16px;
   text-align: center;
 }
@@ -137,13 +141,11 @@ mat-sidenav {
 .content {
   height: calc(100vh - 98px);
   border-radius: 10px;
-  margin: 16px;
-  margin-left: 32px;
+  margin: 16px 16px 16px 32px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 2rem;
   color: lightgray;
 }
@@ -151,4 +153,10 @@ mat-sidenav {
 mat-sidenav-container {
   height: calc(100vh - 65px);
 
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
 }

@@ -8,25 +8,36 @@
         close
       </mat-icon>
     </button>
-    Responsive side navigation
+    {{this.getCurrentPage()}}
   </mat-toolbar>
 
   <mat-sidenav-container>
-    <mat-sidenav class="mat-elevation-z8" #sidenav="matSidenav">
-      <button mat-button class="menu-button">
-        <a>A Propos</a>
-      </button>
-      <button mat-button class="menu-button">
-        <mat-icon>person</mat-icon>
-        <span>Profile</span>
-      </button>
-      <button mat-button class="menu-button">
-        <mat-icon>info</mat-icon>
-        <span>About</span>
-      </button>    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
+
+    <mat-sidenav #sidenav="matSidenav">
+
+      <img
+        src="./assets/Logo_TTM.jpg"
+        routerLink="/"
+       alt="TTM Logo"/>
+      <mat-divider></mat-divider>
+
+      <!-- Sizes -->
+      <div class="menu-button-div">
+        <ion-button expand="full" size="large" fill="solid" routerLink="/a-propos" class="ion-text-left">A Propos</ion-button>
       </div>
+
+      <ion-button expand="full" size="large" fill="solid" routerLink="/urbanisme">Urbanisme</ion-button>
+
+      <ion-button expand="full" size="large" fill="solid" routerLink="/architecture">Architecture</ion-button>
+
+      <ion-button expand="full" size="large" fill="solid" routerLink="/production">Production</ion-button>
+
+      <ion-button expand="full" size="large" fill="solid" routerLink="/hommes">Hommes</ion-button>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ion-router-outlet></ion-router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </ion-app>

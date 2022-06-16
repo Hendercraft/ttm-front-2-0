@@ -1,0 +1,87 @@
+.home {
+
+}
+
+.title {
+  padding-bottom: 1em;
+  margin-bottom: 0;
+  letter-spacing: .7em;
+  border-bottom: 1px #111 solid ;
+  text-align: center;
+}
+
+.upper-bar{
+  width: 90%;
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.upper-bar div{
+  margin-top: 0;
+  padding-top: 0;
+}
+.head{
+  margin-top: 1em;
+  padding-top: 2em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  width: 90%;
+}
+
+img{
+  margin: 5em auto 3em;
+  height: auto;
+  display: flex;
+  width: 75%;
+}
+.main{
+  margin-top: 5em;
+}
+button{
+  font-size: 25px;
+  /* font-family: 'Calibri light', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif; */
+  font-family: "Calibri Light", sans-serif;
+  font-weight: lighter;
+  letter-spacing: .1em;
+}
+
+@media screen and (max-width:700px) {
+  .title{
+    width: 450px;
+    margin-top: 1em;
+    font-size: medium;
+    text-align: center;
+    /* border: 1px red solid; */
+  }
+  img{
+
+    height: 30vh;
+    width: auto;
+
+    /* height: 250px;
+    width: 500px; */
+    text-align: center;
+  }
+  button{
+    font-size: small;
+  }
+}
+
+@media screen and (max-width:400px) {
+  h1{
+    font-size: x-small;
+  }
+  img{
+    height: 30vh;
+    width: auto;
+
+  }
+}
+
+ion-segment-button{
+  --color: grey;
+  --color-hover: black;
+  --border-color: black;
+  --color-checked: black;
+}
