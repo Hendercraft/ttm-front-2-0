@@ -1,0 +1,30 @@
+.register-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register-card{
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-flow: column;
+}
+
+.register-title{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.register-item{
+  width: 100%;
+}
+.register-form{
+  display: flex;
+  flex-flow: column;
+}
+
+.register-button{
+  margin-bottom: 5%;
+  margin-top: 5%;
+}

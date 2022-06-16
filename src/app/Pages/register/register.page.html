@@ -1,0 +1,47 @@
+<div class="register-div">
+  <mat-card class="register-card mat-elevation-z10">
+    <mat-card-title class="register-title">Inscription</mat-card-title>
+    <form (ngSubmit)="submitForm()" [formGroup]="registerForm" class="register-form">
+
+      <mat-form-field appearance="outline" class="register-item">
+        <mat-label>Nom d'utilisateur:</mat-label>
+        <input formControlName="username" matInput placeholder="Nom d'Utilisateur" type="text">
+
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="register-item">
+        <mat-label>Prénom:</mat-label>
+        <input formControlName="fName" matInput placeholder="Nom" type="text">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="register-item">
+        <mat-label>Nom:</mat-label>
+        <input formControlName="lName" matInput placeholder="Nom" type="text">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="register-item">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="exemple@mail.com" type="email">
+
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="register-item">
+        <mat-label>Mot de passe</mat-label>
+        <input formControlName="password" matInput type="password">
+        <mat-icon matSuffix> vpn_key</mat-icon>
+      </mat-form-field>
+        <mat-form-field appearance="outline" class="register-item">
+          <mat-label>Répétez le mot de passe</mat-label>
+          <input formControlName="rPassword" matInput type="password">
+          <mat-icon matSuffix> vpn_key</mat-icon>
+      </mat-form-field>
+
+      <button class="register-item register-button" mat-button>S'inscrire</button>
+    </form>
+  </mat-card>
+</div>
