@@ -41,6 +41,8 @@
           <mat-icon matSuffix> vpn_key</mat-icon>
       </mat-form-field>
 
+      <span *ngIf="errorMessage!==''" class ="warning">{{errorMessage}}</span>
+
       <button class="register-item register-button" mat-button>S'inscrire</button>
     </form>
   </mat-card>

@@ -16,6 +16,10 @@
         <mat-icon matSuffix> vpn_key</mat-icon>
 
       </mat-form-field>
+
+      <span *ngIf="errorMessage!==''" class ="warning">{{errorMessage}}</span>
+
+
       <button class="sign-in-card-item sign-up-button" mat-button>Se Connecter</button>
     </form>
   </mat-card>
