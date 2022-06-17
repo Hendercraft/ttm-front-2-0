@@ -1,0 +1,24 @@
+.token-expired-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.token-expired-card{
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  ;
+}
+
+.token-expired-title{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+a{
+  color: black;
+}

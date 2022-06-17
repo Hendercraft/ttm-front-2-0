@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {IsSignedInGuard} from './guard/is-signed-in.guard';
+
 
 const routes: Routes = [
   {
@@ -42,6 +44,15 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./Pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./Pages/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate:[IsSignedInGuard]
+  },
+  {
+    path: 'token-expired',
+    loadChildren: () => import('./Pages/token-expired/token-expired.module').then( m => m.TokenExpiredPageModule)
   },
 ];
 

@@ -11,9 +11,19 @@
     <span>{{this.getCurrentPage()}}</span>
 
     <span class="spacer"></span>
+    <div *ngIf="isLogedIn() === false;">
+      <button mat-button class="ion-align" routerLink="/login">Connexion</button>
 
-    <button mat-button class="ion-align" routerLink="/login">Connexion</button>
-    <button mat-button class="ion-align" routerLink="/register">S'enregistrer</button>
+      <button mat-button class="ion-align" routerLink="/register">S'enregistrer</button>
+
+    </div>
+    <div *ngIf="isLogedIn() === true">
+      <button mat-button  class="ion-align" routerLink="/profile" >Profile</button>
+
+      <button mat-button class="ion-align" (click)="logout()">Déconnexion</button>
+
+    </div>
+
 
   </mat-toolbar>
 

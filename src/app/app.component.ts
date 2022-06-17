@@ -51,8 +51,18 @@ export class AppComponent implements AfterViewInit, OnInit{
       case '/production':
         return 'Production';
     }
-
   }
+
+  isLogedIn(): boolean{
+    return localStorage.getItem('token') !== null;
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
+
+
 }
 
 
