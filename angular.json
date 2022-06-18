@@ -19,6 +19,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+
             "assets": [
               {
                 "glob": "**/*",
@@ -77,6 +78,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "proxyConfig": "proxy.config.json",
             "browserTarget": "app:build"
           },
           "configurations": {

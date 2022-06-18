@@ -17,7 +17,7 @@ export class IsSignedInGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
     // If token is okay => Access the page, otherwise try to refresh it, if we cannot,
     // we'll redirect the user to an error page asking him to re-login
-      const isSignedIn = this.jwt.isTokenValid();
+      const isSignedIn = this.jwt.isAnyTokenValid();
 
       if (isSignedIn !== true){//redirect to the error page
         this.router.navigate(['token-expired']);

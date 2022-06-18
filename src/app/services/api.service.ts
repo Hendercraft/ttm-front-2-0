@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ContactInfo} from '../Pages/a-propos/ContactInfo';
 import {environment} from '../../environments/environment';
+import {JwtTokenService} from './jwt-token.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private jwt: JwtTokenService
+  ) {
   }
 
 
@@ -25,5 +29,15 @@ export class ApiService {
       email: contactForm.email, phone: contactForm.phone, subject: contactForm.subject, message: contactForm.message
     }, httpOptions);
   }
-}
 
+
+  getCurrentUserData(){
+    if (this.jwt.isAnyTokenValid()){
+      const userInf = this.jwt.jwtDecrypt(this.jwt.getToken());
+      const url = environment.apiURL +'community/' + userInf.user_id;
+      return this.http.get<any>(url);
+    }else{
+      return null;
+    }
+  }
+}

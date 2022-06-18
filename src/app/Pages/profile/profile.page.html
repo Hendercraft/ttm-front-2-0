@@ -19,14 +19,14 @@
         <p>
           <mat-form-field>
             <mat-label>Nom</mat-label>
-            <input matInput id="name" formControlName="name" type="text">
+            <input matInput id="last_name" formControlName="lastName" type="text">
           </mat-form-field>
         </p>
 
         <p>
           <mat-form-field>
             <mat-label>Prénom</mat-label>
-            <input matInput id="last_name" formControlName="lastName" type="text">
+            <input matInput id="first_name" formControlName="firstName" type="text">
           </mat-form-field>
         </p>
 
@@ -58,9 +58,16 @@
           </mat-form-field>
         </p>
 
+        <p>
+          <mat-form-field>
+            <mat-label>Numéro de téléphone</mat-label>
+            <input matInput id="phoneNUmber" formControlName="phoneNUmber" type="text">
+          </mat-form-field>
+        </p>
+
         <mat-checkbox id="workInCompagnie" formControlName="workInCompagnie">A travaillé au sein d'une entreprise du site</mat-checkbox>
 
-        <div class="Entreprise" *ngIf="this.ipFrom.value.workInCompagnie //noinspection UnresolvedVariable">
+        <div class="Entreprise" *ngIf="this.ipFrom.value.workInCompagnie">
           <p>
             <mat-form-field>
               <mat-label>Nom de l'entreprise</mat-label>
@@ -129,7 +136,7 @@
                 matInput
                 id="rechercheText"
                 #autosizeRecherche="cdkTextareaAutosize"
-                formControlName="disciplineText"
+                formControlName="rechercheText"
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="15"></textarea>
             </mat-form-field>
@@ -163,7 +170,7 @@
                 matInput
                 id="establishmentText"
                 #autosizeRecherche="cdkTextareaAutosize"
-                formControlName="disciplineText"
+                formControlName="establishmentText"
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="15"></textarea>
             </mat-form-field>

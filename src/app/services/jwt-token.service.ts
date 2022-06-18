@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +11,9 @@ import {environment} from '../../environments/environment';
 * It can get data out of it like the userID, verify their validity, and refresh it*/
 export class JwtTokenService {
   data = {
-    token: this.jwtDecrypt(localStorage.getItem('token')), //The 5 min token given at login
-    refreshedToken: null, //The 24h token
+    token: localStorage.getItem('token'),
+    tokenDecrypted: this.jwtDecrypt(localStorage.getItem('token')), //The "5" min token given at login (more like 30)
+    refreshedToken: null, //The "24h" token (more like 30min also)
     userId: null //User Id stored in the token
   };
 
@@ -22,12 +24,13 @@ export class JwtTokenService {
     return Date.now() < exp * 1000;
   }
 
+  /*Check if the 1st token is valid and store a decrypt copy on the structure*/
   tokenIsValid()
   {
     if(localStorage.getItem('token')!=null)
     {
-      this.data.token = this.jwtDecrypt(localStorage.getItem('token'));
-      return this.tokenAlive(this.data.token.exp);
+      this.data.tokenDecrypted = this.jwtDecrypt(localStorage.getItem('token'));
+      return this.tokenAlive(this.data.tokenDecrypted.exp);
     }
     else
     {
@@ -40,8 +43,8 @@ export class JwtTokenService {
   {
     if(localStorage.getItem('token'))
     {
-      this.data.token = this.jwtDecrypt(localStorage.getItem('token'));
-      return this.data.token.user_id;
+      this.data.tokenDecrypted = this.jwtDecrypt(localStorage.getItem('token'));
+      return this.data.tokenDecrypted.user_id;
     }
     else
     {
@@ -68,12 +71,12 @@ export class JwtTokenService {
 
   /*Return the jti part of the token to add it to the header of a http request*/
   authHeader() {
-    this.data.token = this.jwtDecrypt(localStorage.getItem('access'));
+    this.data.tokenDecrypted = this.jwtDecrypt(localStorage.getItem('access'));
     this.data.refreshedToken = this.jwtDecrypt(localStorage.getItem('refreshToken'));
 
-    if (this.tokenAlive(this.data.token.exp)) {
+    if (this.tokenAlive(this.data.tokenDecrypted.exp)) {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      return { Authorization: 'Bearer ' + this.data.token.jti };
+      return { Authorization: 'Bearer ' + this.data.tokenDecrypted.jti };
     } else if (this.tokenAlive(this.data.refreshedToken.exp)) {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       return { Authorization: 'Bearer' + this.data.refreshedToken.jti };
@@ -82,42 +85,75 @@ export class JwtTokenService {
     }
   }
 
-  isTokenValid(): boolean //TODO Optimise the hellout the if vodooshit that is happening here
+
+  isAnyTokenValid(): boolean
   {
-    const refreshedToken = localStorage.getItem('refreshedToken');
-    if(!this.tokenIsValid() && !refreshedToken) //if the token is invalid, and we don't have a 24h token
+    const refreshToken = localStorage.getItem('refresh');
+    if(!this.tokenIsValid() && !refreshToken) //if the token is invalid, and we don't have a token to ask for a refresh
     {
-      const url = environment.apiURL +'token/refresh/';
-      /*refresh the token or throw an error*/
+      return false;
+    }else if (!this.tokenIsValid() && refreshToken){ //If the token is invalid, we have a token to ask for a refresh
+      console.log(refreshToken);
+      console.log('Old token is expired, trying to get a new one');
+      let returnValue = false;
       const observer = {
         next: response => {
-          localStorage.setItem('refreshToken', response.data.access);
-          this.data.refreshedToken = this.jwtDecrypt(localStorage.getItem('refreshToken'));
-          return true;
+          localStorage.clear(); //clearing old token
+          localStorage.setItem('token', response.data.access); //setting the new token
+          this.data.token = localStorage.getItem('token');
+          this.data.tokenDecrypted = this.jwtDecrypt(this.data.token);
+          returnValue = true;
         },
         error: err => {
           console.log('Refresh token failed');
           console.log(err);
-          return false;},
+          this.data.token = null;
+          this.data.tokenDecrypted = null;
+          localStorage.clear();
+          returnValue = false;
+        },
         complete: () => console.log('Observer got a complete notification'),
       };
-
-      console.log('refreshing token..');
-      this.http.post(url, {
-        refresh: localStorage.getItem('refresh')
-      }).subscribe(observer);
-    } else if (!this.tokenIsValid() && refreshedToken) //If the token is invalid, and we have a 24h token
-    {
-      console.log(this.data.refreshedToken);
-      if (!this.tokenAlive(this.data.refreshedToken.exp)) { //check if it's still valid
-        //if no we clear data
-        localStorage.clear();
-        this.data.token = null;
-        this.data.refreshedToken = null;
-        return false;
-      }
+      this.refreshToken().subscribe(observer);
+      return returnValue;
     } else { //this mean our first token is good
       return true;
     }
+  }
+
+
+  getToken(){
+    this.data.token = null;
+    if (this.tokenIsValid()){
+      this.data.token = localStorage.getItem('token');
+      this.data.tokenDecrypted = this.jwtDecrypt(this.data.token);
+    }else if (localStorage.getItem('refresh') !== null){
+      const observer = {
+        next: response => {
+          localStorage.clear(); //clearing old token
+          localStorage.setItem('token', response.data.access); //setting the new token
+          this.data.token = localStorage.getItem('token');
+          this.data.tokenDecrypted = this.jwtDecrypt(this.data.token);
+        },
+        error: err => {
+          console.log('Refresh token failed');
+          console.log(err);
+          this.data.token = null;
+          this.data.tokenDecrypted = null;
+          localStorage.clear();
+        },
+        complete: () => console.log('Observer got a complete notification'),
+      };
+      this.refreshToken().subscribe(observer);
+    }
+    return this.data.token;
+  }
+  refreshToken(): Observable<any>{ //refresh the token and return an observable
+    const url = environment.apiURL +'token/refresh/';
+    /*refresh the token or throw an error*/
+    console.log('refreshing token..');
+    return this.http.post(url,{
+      refresh: localStorage.getItem('refresh')
+    });
   }
 }
