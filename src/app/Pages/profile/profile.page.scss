@@ -1,0 +1,35 @@
+.upper-bar{
+  border-top: 1px #111 solid ;
+
+  width: 95%;
+  margin-top: 0;
+  padding-top: 0;
+  margin-left: 2em;
+  margin-bottom:  2em;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-segment-button{
+  --color: grey;
+  --color-hover: black;
+  --border-color: black;
+  --color-checked: black;
+}
+
+.title {
+  padding-bottom: 1em;
+  margin-bottom: 0;
+  margin-left: 2em;
+
+
+  text-align: center;
+}
+
+.main{
+  margin-left: 2em;
+  margin-right: 4em;
+
+}
+

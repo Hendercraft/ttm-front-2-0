@@ -1,9 +1,176 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+  <div class="head">
+    <h1 class="title">Profil</h1>
+  </div>
+
+  <ion-segment class = upper-bar [(ngModel)]="selectedTab">
+    <ion-segment-button id ="bt-information-personnelles" value="information-personnelles">Informations personnelles</ion-segment-button>
+    <ion-segment-button id ="bt-discipline" value="discipline">Discipline</ion-segment-button>
+    <ion-segment-button  id ="bt-champs-de-recherche" value="champs-de-recherche">Champs de recherche</ion-segment-button>
+    <ion-segment-button  id ="bt-établissement-de-recherche" value="établissement-de-recherche">Établissement de recherche</ion-segment-button>
+  </ion-segment>
+
+  <div class="main">
+
+    <div class="information-personnelles" *ngIf="selectedTab === 'information-personnelles'">
+     <mat-card>
+      <form [formGroup]="ipFrom" (ngSubmit)="ipOnSubmit()">
+        <p>
+          <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput id="name" formControlName="name" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Prénom</mat-label>
+            <input matInput id="last_name" formControlName="lastName" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Adresse email</mat-label>
+            <input matInput id="email" formControlName="email" type="email">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Adresse postale</mat-label>
+            <input matInput id="address" formControlName="address" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Ville</mat-label>
+            <input matInput id="town" formControlName="town" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Code postal</mat-label>
+            <input matInput id="postalCode" formControlName="postalCode" type="text">
+          </mat-form-field>
+        </p>
+
+        <mat-checkbox id="workInCompagnie" formControlName="workInCompagnie">A travaillé au sein d'une entreprise du site</mat-checkbox>
+
+        <div class="Entreprise" *ngIf="this.ipFrom.value.workInCompagnie //noinspection UnresolvedVariable">
+          <p>
+            <mat-form-field>
+              <mat-label>Nom de l'entreprise</mat-label>
+              <input matInput id="compagnie" formControlName="compagnie" type="text">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <mat-label>Durée de travaille dans l'entreprise (année)</mat-label>
+              <input matInput id="compagnieTime" formControlName="compagnieTime" type="text">
+            </mat-form-field>
+          </p>
+
+        </div>
+
+
+
+
+      </form>
+
+
+     </mat-card>
+    </div>
+
+    <div class="discipline" *ngIf="selectedTab === 'discipline'">
+      <mat-card>
+        <form [formGroup]="disciplineFrom" (ngSubmit)="disciplineOnSubmit()">
+          <p>
+            <mat-form-field>
+              <mat-label>Nom de la discipline</mat-label>
+              <input matInput id="disciplineName" formControlName="disciplineName" type="text">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Détail de la discipline</mat-label>
+              <textarea
+                cdkTextareaAutosize
+                matInput
+                id="disciplineText"
+                #autosizeDiscipline="cdkTextareaAutosize"
+                formControlName="disciplineText"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="15"></textarea>
+            </mat-form-field>
+          </p>
+        </form>
+      </mat-card>
+    </div>
+
+    <div class="champs-de-recherche" *ngIf="selectedTab === 'champs-de-recherche'">
+      <mat-card>
+        <form [formGroup]="rechercheFrom" (ngSubmit)="rechercheOnSubmit()">
+          <p>
+            <mat-form-field>
+              <mat-label>Nom du champ de recherche</mat-label>
+              <input matInput id="rechercheName" formControlName="rechercheName" type="text">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Détail du champ de recherche</mat-label>
+              <textarea
+                cdkTextareaAutosize
+                matInput
+                id="rechercheText"
+                #autosizeRecherche="cdkTextareaAutosize"
+                formControlName="disciplineText"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="15"></textarea>
+            </mat-form-field>
+          </p>
+        </form>
+      </mat-card>
+    </div>
+
+    <div class="établissement-de-recherche" *ngIf="selectedTab === 'établissement-de-recherche'">
+      <mat-card>
+        <form [formGroup]="establishmentFrom" (ngSubmit)="establishmentOnSubmit()">
+          <p>
+            <mat-form-field>
+              <mat-label>Établissement de recherche</mat-label>
+              <input matInput id="establishmentName" formControlName="establishmentName" type="text">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <mat-label>Laboratoire de recherche</mat-label>
+              <input matInput id="labName" formControlName="labName" type="text">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Détail du champ de recherche</mat-label>
+              <textarea
+                cdkTextareaAutosize
+                matInput
+                id="establishmentText"
+                #autosizeRecherche="cdkTextareaAutosize"
+                formControlName="disciplineText"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="15"></textarea>
+            </mat-form-field>
+          </p>
+        </form>
+      </mat-card>
+
+    </div>
+  </div>
 </ion-content>
