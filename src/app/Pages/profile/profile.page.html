@@ -16,6 +16,14 @@
     <div class="information-personnelles" *ngIf="selectedTab === 'information-personnelles'">
      <mat-card>
       <form [formGroup]="ipFrom" (ngSubmit)="ipOnSubmit()">
+
+        <p>
+          <mat-form-field>
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input matInput id="username" formControlName="username" type="text">
+          </mat-form-field>
+        </p>
+
         <p>
           <mat-form-field>
             <mat-label>Nom</mat-label>
@@ -61,11 +69,11 @@
         <p>
           <mat-form-field>
             <mat-label>Numéro de téléphone</mat-label>
-            <input matInput id="phoneNUmber" formControlName="phoneNUmber" type="text">
+            <input matInput id="phoneNumber" formControlName="phoneNumber" type="text">
           </mat-form-field>
         </p>
 
-        <mat-checkbox id="workInCompagnie" formControlName="workInCompagnie">A travaillé au sein d'une entreprise du site</mat-checkbox>
+        <mat-checkbox id="workedOnTheSite" formControlName="workedOnTheSite">A travaillé au sein d'une entreprise du site</mat-checkbox>
 
         <div class="Entreprise" *ngIf="this.ipFrom.value.workInCompagnie">
           <p>
@@ -84,12 +92,8 @@
 
         </div>
 
-
-
-
+        <button mat-raised-button [disabled]="ipFrom.invalid" id="contact-send">Envoyer</button>
       </form>
-
-
      </mat-card>
     </div>
 
@@ -115,6 +119,8 @@
                 cdkAutosizeMaxRows="15"></textarea>
             </mat-form-field>
           </p>
+
+          <button mat-raised-button [disabled]="disciplineFrom.invalid">Envoyer</button>
         </form>
       </mat-card>
     </div>

@@ -22,6 +22,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ]
   ,
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
