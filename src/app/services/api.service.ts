@@ -63,7 +63,7 @@ export class ApiService {
 
 
   /*Make a put request to the API to update the current user data, return a promise contenting the answer*/
-  updateUserData(userData){
+  updateUserData(userData, keys){
     if (this.jwt.isAnyTokenValid()){
       const userInf = this.jwt.jwtDecrypt(this.jwt.getToken());
       const url = environment.apiURL +'community/' + userInf.user_id +'/';
@@ -83,7 +83,10 @@ export class ApiService {
         postalAdress: userData.value.address + '@' + userData.value.town + '@' + userData.value.postalCode,
         workedOnTheSite : userData.value.workedOnTheSite,
         workedInCompany: userData.value.compagnie,
-        workTimeDuration: userData.value.compagnieTime
+        workTimeDuration: userData.value.compagnieTime,
+        disciplineFK: keys.discipline,
+        researchFieldFK: keys.research,
+        researchEstablishmentFK: keys.establishment
       }, httpOptions);
     }else{
       return null;
@@ -114,11 +117,17 @@ export class ApiService {
   //Currently doesn't work has the server throw a 500
   createDiscipline(userId, data){
     const url = environment.apiURL + 'community/discipline/create/';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
     return this.http.post<any>(url,{
       discipline: data.value.disciplineName,
       commentsDiscipline: data.value.disciplineText,
       user: userId
-    });
+    },httpOptions);
   }
 
 

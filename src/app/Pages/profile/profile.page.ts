@@ -77,7 +77,7 @@ export class ProfilePage implements OnInit {
   }
   //onSubmit
   ipOnSubmit(){
-    const req =  this.api.updateUserData(this.ipFrom);
+    const req =  this.api.updateUserData(this.ipFrom, this.userPkAndFk);
     if (req === null){
       console.log('there is an error while updating user data, response req was null');
     }else{
@@ -97,14 +97,15 @@ export class ProfilePage implements OnInit {
 
   disciplineOnSubmit() {
     if(this.userPkAndFk.discipline === null) { //we need to create a new entry
-      //TODO ONCE THE BACK HAS BEEN FIXED (Currenlty can't create a new entry on the "api/community/discipline/create/" endpoint
       const observer = {
         next: response => {
-          console.log(response);
-          //Here we'll need to get the id of the response and put it a the fk, and do a pull request to update the Fk in the user table
+          this.userPkAndFk.discipline = response.id;
+          //Since for some reasons we user ALSO has a ref to the discipline we also need to update it
+          this.ipOnSubmit();
+          this.snackBar.open('Votre discipline a été crée avec succès', 'Ok');
         },
         error: err => {
-          console.log('there is an error while creating discipline');
+          this.snackBar.open('Il y a eut une erreur lors de la création de votre disciple, Veuillez ressayer', 'Ok');
           console.log(err);
         },
         complete: () => console.log('Observer got a complete notification'),
