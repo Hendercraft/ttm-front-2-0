@@ -1,0 +1,25 @@
+<ion-header>
+  <div class="head">
+    <h1 class="title">Témoignage</h1>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <mat-card class="card">
+      <form [formGroup]="testimonyForm" (ngSubmit)="onSubmit()">
+        <textarea
+          rows="30" cols="200"
+          formControlName="text">
+
+        </textarea>
+
+        <br>
+
+        <button mat-raised-button [disabled]="testimonyForm.invalid">Envoyer</button>
+
+
+      </form>
+    </mat-card>
+  </div>
+</ion-content>

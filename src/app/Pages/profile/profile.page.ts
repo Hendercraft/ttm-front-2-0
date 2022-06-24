@@ -131,11 +131,76 @@ export class ProfilePage implements OnInit {
     }
   }
 
-  rechercheOnSubmit() {
-
+  researchOnSubmit() {
+    if(this.userPkAndFk.research === null) { //we need to create a new entry
+      const observer = {
+        next: response => {
+          this.userPkAndFk.research = response.id;
+          //Since for some reasons we user ALSO has a ref to the discipline we also need to update it
+          this.ipOnSubmit();
+          this.snackBar.open('Votre champ de recherche a été crée avec succès', 'Ok');
+        },
+        error: err => {
+          this.snackBar.open('Il y a eut une erreur lors de la création de votre champ de recherche, Veuillez ressayer', 'Ok');
+          console.log(err);
+        },
+        complete: () => console.log('Observer got a complete notification'),
+      };
+      this.api.createResearchField(this.userPkAndFk.id, this.rechercheFrom).subscribe(observer);
+    }else{ //we modify the entry
+      const observer = {
+        next: response => {
+          this.snackBar.open('Votre champ de recherche a été mis a jour avec succès', 'Ok');
+        },
+        error: err => {
+          this.snackBar.open('Il y a eu une erreur lors de la mise à jour de votre champ de recherche, ' +
+            'veuillez réessayez', 'Ok');
+          console.log(err);
+        },
+        complete: () => console.log('Observer got a complete notification'),
+      };
+      this.api.updateUserResearchField(
+        this.userPkAndFk.id,
+        this.userPkAndFk.research,
+        this.rechercheFrom
+      ).subscribe(observer);
+    }
   }
 
   establishmentOnSubmit() {
+    if(this.userPkAndFk.establishment === null) { //we need to create a new entry
+      const observer = {
+        next: response => {
+          this.userPkAndFk.research = response.id;
+          //Since for some reasons we user ALSO has a ref to the discipline we also need to update it
+          this.ipOnSubmit();
+          this.snackBar.open('Votre établissement de recherche a été crée avec succès', 'Ok');
+        },
+        error: err => {
+          this.snackBar.open('Il y a eut une erreur lors de la création de votre établissement de recherche, Veuillez ressayer', 'Ok');
+          console.log(err);
+        },
+        complete: () => console.log('Observer got a complete notification'),
+      };
+      this.api.createResearchEstablishment(this.userPkAndFk.id, this.establishmentFrom).subscribe(observer);
+    }else{ //we modify the entry
+      const observer = {
+        next: response => {
+          this.snackBar.open('Votre établissement de recherche a été mis à jour avec succès', 'Ok');
+        },
+        error: err => {
+          this.snackBar.open('Il y a eu une erreur lors de la mise à jour de votre établissement de recherche, ' +
+            'veuillez réessayez', 'Ok');
+          console.log(err);
+        },
+        complete: () => console.log('Observer got a complete notification'),
+      };
+      this.api.updateUserResearchEstablishment(
+        this.userPkAndFk.id,
+        this.userPkAndFk.establishment,
+        this.establishmentFrom
+      ).subscribe(observer);
+    }
 
   }
 

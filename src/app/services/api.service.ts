@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ContactInfo} from '../Pages/a-propos/ContactInfo';
 import {environment} from '../../environments/environment';
 import {JwtTokenService} from './jwt-token.service';
+import {FormGroup} from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,6 +61,37 @@ export class ApiService {
     },httpOptions);
   }
 
+  updateUserResearchField(userId, fk, data){
+    const url = environment.apiURL + `community/champRecherche/update/${fk}/`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
+    return this.http.put<any>(url,{
+      researchField: data.value.rechercheName,
+      commentsResearch: data.value.rechercheText,
+      user: userId
+    },httpOptions);
+  }
+
+  updateUserResearchEstablishment(userId, fk, data){
+    const url = environment.apiURL + `community/etablisementRecherche/update/${fk}/`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
+    return this.http.put<any>(url,{
+      laboratory: data.value.labName,
+      establishment: data.value.establishmentName,
+      commentsEstablishment : data.value.establishmentText,
+      user: userId
+    },httpOptions);
+  }
+
 
 
   /*Make a put request to the API to update the current user data, return a promise contenting the answer*/
@@ -111,10 +143,23 @@ export class ApiService {
     }, httpOptions);
   }
 
+  sendTestimony(testimonyForm: FormGroup){
+    const url = environment.apiURL +'community/temoignages/create/'; //yes there is a s at the end for some reasons
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
+    return this.http.post<any>(url,{
+      testimony: testimonyForm.value.text,
+      user: this.jwt.jwtDecrypt(this.jwt.getToken()).user_id
+    }, httpOptions);
+  }
+
 
 
   /*Create a new entry to the discipline tale via post, and return a promise*/
-  //Currently doesn't work has the server throw a 500
   createDiscipline(userId, data){
     const url = environment.apiURL + 'community/discipline/create/';
     const httpOptions = {
@@ -126,6 +171,39 @@ export class ApiService {
     return this.http.post<any>(url,{
       discipline: data.value.disciplineName,
       commentsDiscipline: data.value.disciplineText,
+      user: userId
+    },httpOptions);
+  }
+
+
+  /*Create a new entry to the researchField tale via post, and return a promise*/
+  createResearchField(userId, data){
+    const url = environment.apiURL + 'community/champRecherche/create/';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
+    return this.http.post<any>(url,{
+      researchField: data.value.rechercheName,
+      commentsResearch: data.value.rechercheText,
+      user: userId
+    },httpOptions);
+  }
+  /*Create a new entry to the researchField tale via post, and return a promise*/
+  createResearchEstablishment(userId, data){
+    const url = environment.apiURL + 'community/etablisementRecherche/create/'; //TODO fix the url in the back
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `Bearer ${this.jwt.getToken()}`
+      })
+    };
+    return this.http.post<any>(url,{
+      laboratory: data.value.labName,
+      establishment: data.value.establishmentName,
+      commentsEstablishment : data.value.establishmentText,
       user: userId
     },httpOptions);
   }

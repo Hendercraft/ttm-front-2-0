@@ -1,0 +1,29 @@
+textarea{
+  background-color: white;
+  overflow: auto;
+
+  flex-grow: 4;
+  margin-top: 3em;
+  margin-bottom: 1em;
+
+  border-radius: 0.5em;
+}
+
+.title {
+  padding-bottom: 1em;
+  margin-bottom: 0;
+  margin-left: 2em;
+
+
+  text-align: center;
+}
+
+.main{
+  margin-left: 2em;
+  margin-right: 4em;
+
+}
+.card{
+  display: flex;
+  justify-content: center
+}

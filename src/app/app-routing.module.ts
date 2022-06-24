@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'token-expired',
     loadChildren: () => import('./Pages/token-expired/token-expired.module').then( m => m.TokenExpiredPageModule)
   },
+  {
+    path: 'temoignage',
+    loadChildren: () => import('./Pages/temoignage/temoignage.module').then( m => m.TemoignagePageModule)
+  },
 ];
 
 @NgModule({

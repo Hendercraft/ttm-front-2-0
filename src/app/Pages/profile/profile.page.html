@@ -75,7 +75,7 @@
 
         <mat-checkbox id="workedOnTheSite" formControlName="workedOnTheSite">A travaillé au sein d'une entreprise du site</mat-checkbox>
 
-        <div class="Entreprise" *ngIf="this.ipFrom.value.workInCompagnie">
+        <div class="Entreprise" *ngIf="this.ipFrom.value.workedOnTheSite">
           <p>
             <mat-form-field>
               <mat-label>Nom de l'entreprise</mat-label>
@@ -127,7 +127,7 @@
 
     <div class="champs-de-recherche" *ngIf="selectedTab === 'champs-de-recherche'">
       <mat-card>
-        <form [formGroup]="rechercheFrom" (ngSubmit)="rechercheOnSubmit()">
+        <form [formGroup]="rechercheFrom" (ngSubmit)="researchOnSubmit()">
           <p>
             <mat-form-field>
               <mat-label>Nom du champ de recherche</mat-label>
@@ -147,6 +147,8 @@
                 cdkAutosizeMaxRows="15"></textarea>
             </mat-form-field>
           </p>
+
+          <button mat-raised-button [disabled]="rechercheFrom.invalid">Envoyer</button>
         </form>
       </mat-card>
     </div>
@@ -181,6 +183,7 @@
                 cdkAutosizeMaxRows="15"></textarea>
             </mat-form-field>
           </p>
+          <button mat-raised-button [disabled]="establishmentFrom.invalid">Envoyer</button>
         </form>
       </mat-card>
 

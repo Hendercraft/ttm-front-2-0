@@ -53,7 +53,7 @@ export class AppComponent implements AfterViewInit, OnInit{
     }
   }
 
-  isLogedIn(): boolean{
+  isLoggedIn(): boolean{
     return localStorage.getItem('token') !== null;
   }
 

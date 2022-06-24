@@ -11,13 +11,13 @@
     <span>{{this.getCurrentPage()}}</span>
 
     <span class="spacer"></span>
-    <div *ngIf="isLogedIn() === false;">
+    <div *ngIf="isLoggedIn() === false;">
       <button mat-button class="ion-align" routerLink="/login">Connexion</button>
 
       <button mat-button class="ion-align" routerLink="/register">S'enregistrer</button>
 
     </div>
-    <div *ngIf="isLogedIn() === true">
+    <div *ngIf="isLoggedIn() === true">
       <button mat-button  class="ion-align" routerLink="/profile" >Profile</button>
 
       <button mat-button class="ion-align" (click)="logout()">Déconnexion</button>
@@ -50,6 +50,7 @@
 
       <ion-button expand="full" size="large" fill="solid" routerLink="/hommes">Hommes</ion-button>
 
+      <ion-button expand="full" size="large" fill="solid" routerLink="/temoignage">Mon témoignage</ion-button>
     </mat-sidenav>
 
     <mat-sidenav-content>
